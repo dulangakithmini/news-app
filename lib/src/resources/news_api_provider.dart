@@ -1,11 +1,20 @@
+import 'dart:convert';
+
 import 'package:http/http.dart' show Client;
 
 class NewsApiProvider {
   /// Create an instance of the Client class
+  /// Can use this to issue get requests over to the API
   Client client = Client();
 
   /// To get list of top Ids
-  fetchTopIds() {}
+  fetchTopIds() async {
+    final response = await client.get(
+        Uri.parse('https://hacker-news.firebaseio.com/v0/topstories.json'));
+    final ids = json.decode(response.body);
+
+    return ids;
+  }
 
   /// To get an item
   fetchItem() {}
