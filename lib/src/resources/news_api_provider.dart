@@ -2,6 +2,8 @@ import 'dart:convert';
 
 import 'package:http/http.dart' show Client;
 
+import '../models/item_model.dart';
+
 class NewsApiProvider {
   /// Create an instance of the Client class
   /// Can use this to issue get requests over to the API
@@ -17,5 +19,11 @@ class NewsApiProvider {
   }
 
   /// To get an item
-  fetchItem() {}
+  fetchItem(int id) async {
+    final response = await client.get(Uri.parse(
+        'https://hacker-news.firebaseio.com/v0/item/$id.json?print=pretty'));
+    var itemModel = ItemModel.fromJson(json.decode(response.body));
+
+    return itemModel;
+  }
 }
