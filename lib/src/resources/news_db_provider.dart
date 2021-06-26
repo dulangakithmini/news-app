@@ -48,6 +48,7 @@ class NewsDbProvider {
   }
 
   fetchItem(int id) async {
+    /// Fetch items from the DB
     final maps = await db.query(
       "Items",
       columns: null,
