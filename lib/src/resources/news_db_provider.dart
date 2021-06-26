@@ -64,4 +64,7 @@ class NewsDbProvider {
     }
     return null;
   }
+
+  /// Take an ItemModel and insert to the DB
+  addItem(ItemModel item) {}
 }

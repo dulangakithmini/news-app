@@ -62,7 +62,7 @@ class ItemModel {
     parent = parsedJson['parent'];
 
     /// Take list of integers as a String and turn it into actual list of integers.
-    kids = JsonDecoder(parsedJson['kids']) as List;
+    kids = jsonDecode(parsedJson['kids']);
     url = parsedJson['url'];
     score = parsedJson['score'];
     title = parsedJson['title'];
