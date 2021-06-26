@@ -21,5 +21,12 @@ class Repository {
     if (item != null) {
       return item;
     }
+
+    /// Fetch item from the API when the item is not in the DB
+    item = await apiProvider.fetchItem(id);
+
+    /// Add the fetched item to the DB
+    dbProvider.addItem(item);
+    return item;
   }
 }
