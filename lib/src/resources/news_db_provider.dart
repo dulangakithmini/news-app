@@ -66,5 +66,7 @@ class NewsDbProvider {
   }
 
   /// Take an ItemModel and insert to the DB
-  addItem(ItemModel item) {}
+  addItem(ItemModel item) {
+    return db.insert("Items", item.toMapForDb());
+  }
 }

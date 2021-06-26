@@ -69,6 +69,7 @@ class ItemModel {
     descendants = parsedJson['descendants'];
   }
 
+  ///  Convert ItemModel to a Map when adding data to the DB
   Map<String, dynamic> toMapForDb() {
     return <String, dynamic>{
       "id": id,
