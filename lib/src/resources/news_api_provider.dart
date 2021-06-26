@@ -14,7 +14,7 @@ class NewsApiProvider {
   final _root = 'https://hacker-news.firebaseio.com/v0';
 
   /// To get list of top Ids
-  fetchTopIds() async {
+  Future fetchTopIds() async {
     final response = await client.get(Uri.parse('$_root/topstories.json'));
     final ids = json.decode(response.body);
 
