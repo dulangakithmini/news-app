@@ -24,6 +24,7 @@ class NewsDbProvider {
       path,
       version: 1,
       onCreate: (Database newDb, int version) {
+        /// Can send a arbitrary snippet of SQL with execute
         newDb.execute("""
           CREATE TABLE Items
           (
@@ -39,10 +40,19 @@ class NewsDbProvider {
             url TEXT,
             score INTEGER,
             title TEXT,
-            descendants INTEGER,
+            descendants INTEGER
           )        
         """);
       },
+    );
+  }
+
+  fetchItem(int id) async {
+    final maps = await db.query(
+      "Items",
+      columns: null,
+      where: "id = ?",
+      whereArgs: [id],
     );
   }
 }
