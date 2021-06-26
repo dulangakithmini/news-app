@@ -12,4 +12,14 @@ class Repository {
     /// We don't have access to top ids in NewsDbProvider
     return apiProvider.fetchTopIds();
   }
+
+  fetchItem(int id) {
+    /// Fetch item by the given id
+    var item = dbProvider.fetchItem(id);
+
+    /// If an item is in the DB with the given id, return the item
+    if (item != null) {
+      return item;
+    }
+  }
 }
