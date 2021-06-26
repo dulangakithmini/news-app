@@ -7,6 +7,7 @@ import '../models/item_model.dart';
 class NewsApiProvider {
   /// Create an instance of the Client class
   /// Can use this to issue get requests over to the API
+  /// This is created(instead of directly writing a get request) for the purpose of testing
   Client client = Client();
 
   /// Take the common part of the url out
@@ -22,8 +23,7 @@ class NewsApiProvider {
 
   /// To get an item
   fetchItem(int id) async {
-    final response =
-        await client.get(Uri.parse('$_root/item/$id.json?print=pretty'));
+    final response = await client.get(Uri.parse('$_root/item/$id.json'));
     var itemModel = ItemModel.fromJson(json.decode(response.body));
 
     return itemModel;
