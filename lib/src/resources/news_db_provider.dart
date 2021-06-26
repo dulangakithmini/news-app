@@ -11,10 +11,19 @@ class NewsDbProvider {
   Database db;
 
   init() async {
-    /// Directory from dart:io package and getApplicationDocumentsDirectory from path_provider
+    /// Directory from dart:io package and getApplicationDocumentsDirectory from path_provider.
+    /// Returns a reference to a directory in the mobile device where different files can be stored.
     Directory documentsDirectory = await getApplicationDocumentsDirectory();
 
     /// From path package
+    /// Join the path of the Directory reference with items.db
     final path = join(documentsDirectory.path, "items.db");
+
+    /// Create the database and assign it to reference variable - db
+    db = await openDatabase(
+      path,
+      version: 1,
+      onCreate: (Database newDb, int version) {},
+    );
   }
 }
