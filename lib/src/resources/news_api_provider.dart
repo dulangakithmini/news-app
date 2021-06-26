@@ -19,7 +19,8 @@ class NewsApiProvider {
     final response = await client.get(Uri.parse('$_root/topstories.json'));
     final ids = json.decode(response.body);
 
-    return ids;
+    /// Cast ids to specify that it returns a list of int
+    return ids.cast<int>();
   }
 
   /// To get an item
