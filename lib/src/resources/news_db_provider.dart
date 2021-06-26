@@ -66,7 +66,7 @@ class NewsDbProvider {
   }
 
   /// Take an ItemModel and insert to the DB
-  addItem(ItemModel item) {
+  Future<int> addItem(ItemModel item) {
     return db.insert("Items", item.toMapForDb());
   }
 }
