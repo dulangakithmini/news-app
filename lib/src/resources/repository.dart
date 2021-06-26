@@ -13,9 +13,9 @@ class Repository {
     return apiProvider.fetchTopIds();
   }
 
-  fetchItem(int id) {
+  fetchItem(int id) async {
     /// Fetch item by the given id
-    var item = dbProvider.fetchItem(id);
+    var item = await dbProvider.fetchItem(id);
 
     /// If an item is in the DB with the given id, return the item
     if (item != null) {
