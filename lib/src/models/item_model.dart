@@ -61,11 +61,33 @@ class ItemModel {
     dead = parsedJson['dead'] == 1;
     parent = parsedJson['parent'];
 
-    /// Take list of integers as a String and turn it into actual list of integers.
+    /// Convert from json into actual list of integers.
     kids = jsonDecode(parsedJson['kids']);
     url = parsedJson['url'];
     score = parsedJson['score'];
     title = parsedJson['title'];
     descendants = parsedJson['descendants'];
+  }
+
+  Map<String, dynamic> toMapForDb() {
+    return <String, dynamic>{
+      "id": id,
+      "type": type,
+      "by": by,
+      "time": time,
+      "text": text,
+      "parent": parent,
+      "url": url,
+      "score": score,
+      "title": title,
+      "descendants": descendants,
+
+      /// Change boolean to integer
+      "deleted": deleted ? 1 : 0,
+      "dead": dead ? 1 : 0,
+
+      /// Convert the list of integers to a json
+      "kids": jsonEncode(kids),
+    };
   }
 }
