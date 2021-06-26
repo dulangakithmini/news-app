@@ -1,3 +1,5 @@
+import 'package:news/src/models/item_model.dart';
+
 import 'news_api_provider.dart';
 import 'news_db_provider.dart';
 
@@ -7,13 +9,13 @@ class Repository {
   NewsApiProvider apiProvider = NewsApiProvider();
   NewsDbProvider dbProvider = NewsDbProvider();
 
-  fetchTopIds() {
+  Future<List<int>> fetchTopIds() {
     /// Fetch top ids from the NewsApiProvider.
     /// We don't have access to top ids in NewsDbProvider
     return apiProvider.fetchTopIds();
   }
 
-  fetchItem(int id) async {
+  Future<ItemModel> fetchItem(int id) async {
     /// Fetch item by the given id
     var item = await dbProvider.fetchItem(id);
 
