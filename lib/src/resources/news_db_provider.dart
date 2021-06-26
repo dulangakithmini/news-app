@@ -12,7 +12,7 @@ class NewsDbProvider {
   /// This instance variable refers the connection to the actual database in the device
   Database db;
 
-  init() async {
+  void init() async {
     /// Directory from dart:io package and getApplicationDocumentsDirectory from path_provider.
     /// Returns a reference to a directory in the mobile device where different files can be stored.
     Directory documentsDirectory = await getApplicationDocumentsDirectory();
