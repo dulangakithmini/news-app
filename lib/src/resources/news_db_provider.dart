@@ -1,14 +1,14 @@
 /// Allows working with device's file system
 import 'dart:io';
 
-import 'package:news/src/resources/repository.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
 
 import '../models/item_model.dart';
+import 'repository.dart';
 
-class NewsDbProvider implements Source {
+class NewsDbProvider implements Source, Cache {
   /// Database type is from the sqflite package
   /// This instance variable refers the connection to the actual database in the device
   Database db;
