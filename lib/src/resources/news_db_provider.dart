@@ -76,3 +76,6 @@ class NewsDbProvider implements Source, Cache {
     return db.insert("Items", item.toMapForDb());
   }
 }
+
+/// To be used by the repository, in order to not create new NewsDbProvider instances in each list of sources and caches
+final newsDbProvider = NewsDbProvider();
