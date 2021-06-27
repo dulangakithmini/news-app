@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:news/src/screens/home_screen/blocs/home_cubit.dart';
+import 'package:news/src/screens/home_screen/blocs/home_bloc.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key key}) : super(key: key);
@@ -20,7 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
         padding: EdgeInsets.all(10),
         child: Column(
           children: [
-            BlocBuilder<HomeCubit, int>(
+            BlocBuilder<HomeBloc, HomeState>(
               // bloc: BlocProvider.of<HomeCubit>(context),
               builder: (ctx, state) {
                 return Row(
@@ -28,14 +28,14 @@ class _HomeScreenState extends State<HomeScreen> {
                     Expanded(
                       child: ElevatedButton(
                         onPressed: () {
-                          BlocProvider.of<HomeCubit>(ctx).decrement();
+                          BlocProvider.of<HomeBloc>(ctx).add(DecrementEvent());
                         },
                         child: Text('-'),
                       ),
                     ),
                     Expanded(
                       child: Text(
-                        state.toString(),
+                        state.count.toString(),
                         textAlign: TextAlign.center,
                         style: TextStyle(fontSize: 20),
                       ),
@@ -43,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     Expanded(
                       child: ElevatedButton(
                         onPressed: () {
-                          BlocProvider.of<HomeCubit>(ctx).increment();
+                          BlocProvider.of<HomeBloc>(ctx).add(IncrementEvent());
                         },
                         child: Text('+'),
                       ),
