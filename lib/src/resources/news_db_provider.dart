@@ -13,6 +13,11 @@ class NewsDbProvider implements Source, Cache {
   /// This instance variable refers the connection to the actual database in the device
   Database db;
 
+  /// Call the init method in the constructor, to create/ open the db when a new instance of NewsDbProvider is created.
+  NewsDbProvider() {
+    init();
+  }
+
   /// For the sake of demonstrating abstract classes
   Future<List<int>> fetchTopIds() {
     return null;
