@@ -16,41 +16,43 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: Text('Gate Keeping app'),
       ),
-      body: BlocProvider<HomeCubit>(
-        create: (ctx) => HomeCubit(),
-        child: Container(
-          padding: EdgeInsets.all(10),
-          child: Column(
-            children: [
-              BlocBuilder<HomeCubit, int>(
-                builder: (ctx, state) {
-                  return Row(
-                    children: [
-                      Expanded(
-                        child: ElevatedButton(
-                          onPressed: () {},
-                          child: Text('-'),
-                        ),
+      body: Container(
+        padding: EdgeInsets.all(10),
+        child: Column(
+          children: [
+            BlocBuilder<HomeCubit, int>(
+              // bloc: BlocProvider.of<HomeCubit>(context),
+              builder: (ctx, state) {
+                return Row(
+                  children: [
+                    Expanded(
+                      child: ElevatedButton(
+                        onPressed: () {
+                          BlocProvider.of<HomeCubit>(ctx).decrement();
+                        },
+                        child: Text('-'),
                       ),
-                      Expanded(
-                        child: Text(
-                          state.toString(),
-                          textAlign: TextAlign.center,
-                          style: TextStyle(fontSize: 20),
-                        ),
+                    ),
+                    Expanded(
+                      child: Text(
+                        state.toString(),
+                        textAlign: TextAlign.center,
+                        style: TextStyle(fontSize: 20),
                       ),
-                      Expanded(
-                        child: ElevatedButton(
-                          onPressed: () {},
-                          child: Text('+'),
-                        ),
+                    ),
+                    Expanded(
+                      child: ElevatedButton(
+                        onPressed: () {
+                          BlocProvider.of<HomeCubit>(ctx).increment();
+                        },
+                        child: Text('+'),
                       ),
-                    ],
-                  );
-                },
-              )
-            ],
-          ),
+                    ),
+                  ],
+                );
+              },
+            )
+          ],
         ),
       ),
     );
