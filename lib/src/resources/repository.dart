@@ -24,8 +24,11 @@ class Repository {
 
   Future<List<int>> fetchTopIds() {
     /// Fetch top ids from the NewsApiProvider.
+    /// Return from the NewsApiProvider since I haven't implemented fetchTopIds function in NewsDbProvider class
+    return sources[1].fetchTopIds();
+
     /// We don't have access to top ids in NewsDbProvider
-    return apiProvider.fetchTopIds();
+    // return apiProvider.fetchTopIds();
   }
 
   Future<ItemModel> fetchItem(int id) async {
