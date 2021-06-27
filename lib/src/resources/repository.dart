@@ -27,20 +27,33 @@ class Repository {
   }
 
   Future<ItemModel> fetchItem(int id) async {
-    /// Fetch item by the given id
-    var item = await dbProvider.fetchItem(id);
+    ItemModel item;
+    Source source;
 
-    /// If an item is in the DB with the given id, return the item
-    if (item != null) {
-      return item;
+    for (source in sources) {
+      item = await source.fetchItem(id);
+
+      if (item != null) {
+        break;
+      }
     }
 
+    return item;
+
+    /// Fetch item by the given id
+    // var item = await dbProvider.fetchItem(id);
+
+    /// If an item is in the DB with the given id, return the item
+    // if (item != null) {
+    //   return item;
+    // }
+
     /// Fetch item from the API when the item is not in the DB
-    item = await apiProvider.fetchItem(id);
+    // item = await apiProvider.fetchItem(id);
 
     /// Add the fetched item to the DB
-    dbProvider.addItem(item);
-    return item;
+    // dbProvider.addItem(item);
+    // return item;
   }
 }
 
