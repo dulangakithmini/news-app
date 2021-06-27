@@ -5,9 +5,20 @@ import 'news_db_provider.dart';
 
 /// Govern access to either the NewsApiProvider or NewsDbProvider
 class Repository {
+  /// Create a list of sources
+  List<Source> sources = <Source>[
+    NewsDbProvider(),
+    NewsApiProvider(),
+  ];
+
+  /// Create a list of caches
+  List<Cache> caches = <Cache>[
+    NewsDbProvider(),
+  ];
+
   /// Create instances of NewsApiProvider and NewsDbProvider
-  NewsApiProvider apiProvider = NewsApiProvider();
-  NewsDbProvider dbProvider = NewsDbProvider();
+  // NewsApiProvider apiProvider = NewsApiProvider();
+  // NewsDbProvider dbProvider = NewsDbProvider();
 
   Future<List<int>> fetchTopIds() {
     /// Fetch top ids from the NewsApiProvider.
