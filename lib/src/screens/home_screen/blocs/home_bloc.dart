@@ -11,6 +11,8 @@ class HomeBloc extends Bloc<BlocEventBase, HomeState> {
       yield HomeState(count: state.count + 1);
     } else if (event is DecrementEvent) {
       yield HomeState(count: state.count - 1);
+    } else if (event is SetHomeEvent) {
+      yield HomeState(count: event.valueToSet);
     }
   }
 }
@@ -32,3 +34,9 @@ class IncrementEvent extends BlocEventBase {}
 
 /// Decrement event
 class DecrementEvent extends BlocEventBase {}
+
+class SetHomeEvent extends BlocEventBase {
+  final int valueToSet;
+
+  SetHomeEvent(this.valueToSet);
+}

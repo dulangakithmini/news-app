@@ -48,6 +48,15 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: Text('+'),
                       ),
                     ),
+                    SizedBox(width: 5),
+                    Expanded(
+                      child: ElevatedButton(
+                        onPressed: () {
+                          BlocProvider.of<HomeBloc>(ctx).add(SetHomeEvent(150));
+                        },
+                        child: Text('SET'),
+                      ),
+                    ),
                   ],
                 );
               },
