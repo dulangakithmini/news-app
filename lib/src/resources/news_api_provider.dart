@@ -4,8 +4,9 @@ import 'dart:convert';
 import 'package:http/http.dart' show Client;
 
 import '../models/item_model.dart';
+import 'repository.dart';
 
-class NewsApiProvider {
+class NewsApiProvider implements Source {
   /// Create an instance of the Client class
   /// Can use this to issue get requests over to the API
   /// This is created(instead of directly writing a get request) for the purpose of testing
