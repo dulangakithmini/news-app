@@ -7,13 +7,15 @@ import 'news_db_provider.dart';
 class Repository {
   /// Create a list of sources
   List<Source> sources = <Source>[
-    NewsDbProvider(),
+    /// NewsDbProvider instance created in NewsDbProvider class
+    newsDbProvider,
     NewsApiProvider(),
   ];
 
   /// Create a list of caches
   List<Cache> caches = <Cache>[
-    NewsDbProvider(),
+    /// NewsDbProvider instance created in NewsDbProvider class
+    newsDbProvider,
   ];
 
   /// Create instances of NewsApiProvider and NewsDbProvider
