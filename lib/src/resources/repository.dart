@@ -38,6 +38,10 @@ class Repository {
       }
     }
 
+    for (var cache in caches) {
+      cache.addItem(item);
+    }
+
     return item;
 
     /// Fetch item by the given id
