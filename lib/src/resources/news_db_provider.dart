@@ -1,16 +1,22 @@
 /// Allows working with device's file system
 import 'dart:io';
 
+import 'package:news/src/resources/repository.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
 
 import '../models/item_model.dart';
 
-class NewsDbProvider {
+class NewsDbProvider implements Source {
   /// Database type is from the sqflite package
   /// This instance variable refers the connection to the actual database in the device
   Database db;
+
+  /// For the sake of demonstrating abstract classes
+  Future<List<int>> fetchTopIds() {
+    return null;
+  }
 
   void init() async {
     /// Directory from dart:io package and getApplicationDocumentsDirectory from path_provider.
