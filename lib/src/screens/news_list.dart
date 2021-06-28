@@ -23,7 +23,7 @@ class NewsList extends StatelessWidget {
       stream: bloc.topIds,
       builder: (context, AsyncSnapshot<List<int>> snapshot) {
         if (!snapshot.hasData) {
-          return Text('No data');
+          return CircularProgressIndicator();
         }
         return ListView.builder(
           /// Total number of ids fetched
