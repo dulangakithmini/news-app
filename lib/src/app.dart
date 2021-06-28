@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news/src/screens/home_screen/blocs/home_bloc.dart';
-import 'package:news/src/screens/home_screen/home_screen.dart';
+
+// import 'package:news/src/screens/home_screen/home_screen.dart';
+import 'package:news/src/screens/news_list.dart';
 
 class App extends StatelessWidget {
   @override
@@ -9,7 +11,7 @@ class App extends StatelessWidget {
     return MaterialApp(
       home: BlocProvider<HomeBloc>(
         create: (ctx) => HomeBloc(),
-        child: HomeScreen(),
+        child: NewsList(),
       ),
     );
   }
