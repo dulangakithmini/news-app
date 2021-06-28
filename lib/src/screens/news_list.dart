@@ -30,7 +30,9 @@ class NewsList extends StatelessWidget {
           itemCount: snapshot.data.length,
 
           itemBuilder: (context, int index) {
-            return Text(snapshot.data[index]);
+            /// String interpolation to convert the int to String
+            return Text('${snapshot.data[index]}');
+            // return Text(snapshot.data[index].toString());
           },
         );
       },
