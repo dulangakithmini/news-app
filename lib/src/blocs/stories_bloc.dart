@@ -12,12 +12,15 @@ class StoriesBloc {
   /// Ids are passed into this and the transformer will be connected to this
   final PublishSubject<int> _itemsFetcher = PublishSubject();
 
-  Stream<Map<int, Future<ItemModel>>> items;
+  // Stream<Map<int, Future<ItemModel>>> items;
 
   final _repository = Repository();
 
   /// Getters to streams
   Stream<List<int>> get topIds => _topIds.stream;
+
+  /// To be listened by the StreamBuilders
+  Stream<Map<int, Future<ItemModel>>> get items => _itemsOutput.stream;
 
   /// Getters to sinks
   void Function(int) get fetchItem => _itemsOutput.sink.add;
