@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:news/src/blocs/stories_provider.dart';
 import 'package:news/src/models/item_model.dart';
@@ -37,17 +38,27 @@ class NewsListTile extends StatelessWidget {
 
   /// To create the Story tile using a given ItemModel
   Widget buildTile(ItemModel item) {
-    return ListTile(
-      title: Text(item.title),
-      subtitle: Text('${item.score} votes'),
+    return Column(
+      children: [
+        ListTile(
+          title: Text(item.title),
+          subtitle: Text('${item.score} votes'),
 
-      /// icon and text in the right side of the screen
-      trailing: Column(
-        children: [
-          Icon(Icons.comment),
-          Text('${item.descendants}'),
-        ],
-      ),
+          /// icon and text in the right side of the screen
+          trailing: Column(
+            children: [
+              Icon(Icons.comment),
+              Text('${item.descendants}'),
+            ],
+          ),
+        ),
+
+        /// Divider between each tile
+        Divider(
+          thickness: 1.5,
+          height: 8.0,
+        ),
+      ],
     );
   }
 }
