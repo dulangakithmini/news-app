@@ -33,14 +33,29 @@ class ItemModel {
 
   ItemModel.fromJson(Map<String, dynamic> parsedJson) {
     id = parsedJson['id'];
-    deleted = parsedJson['deleted'];
+
+    /// When the item is not a story and is a comment, as this value is null, it gives an error in the ternary operators in toMapForDb function.
+    /// Threfore, if the value is null, assign false.
+    deleted = parsedJson['deleted'] ?? false;
+
     type = parsedJson['type'];
     by = parsedJson['by'];
     time = parsedJson['time'];
-    text = parsedJson['text'];
-    dead = parsedJson['dead'];
+
+    /// When the item is not a story and is a comment, as this value is null, it gives an error in the ternary operators in toMapForDb function.
+    /// Threfore, if the value is null, assign ''.
+    text = parsedJson['text'] ?? '';
+
+    /// When the item is not a story and is a comment, as this value is null, it gives an error in the ternary operators in toMapForDb function.
+    /// Threfore, if the value is null, assign false.
+    dead = parsedJson['dead'] ?? false;
+
     parent = parsedJson['parent'];
-    kids = parsedJson['kids'];
+
+    /// When the item is not a story and is a comment, as this value is null, it gives an error in the ternary operators in toMapForDb function.
+    /// Threfore, if the value is null, assign [].
+    kids = parsedJson['kids'] ?? [];
+
     url = parsedJson['url'];
     score = parsedJson['score'];
     title = parsedJson['title'];
