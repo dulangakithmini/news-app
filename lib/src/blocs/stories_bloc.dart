@@ -48,6 +48,12 @@ class StoriesBloc {
     _topIds.sink.add(ids);
   }
 
+  /// Reach the repository and call clearCache method
+  clearCache() {
+    /// Returns a Future that comes from Repository's clearCache
+    return _repository.clearCache();
+  }
+
   _itemsTransformer() {
     return ScanStreamTransformer(
       (Map<int, Future<ItemModel>> cache, int id, int index) {
