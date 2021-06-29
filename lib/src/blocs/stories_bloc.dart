@@ -4,7 +4,7 @@ import 'package:rxdart/rxdart.dart';
 
 class StoriesBloc {
   final PublishSubject<List<int>> _topIds = PublishSubject<List<int>>();
-  final BehaviorSubject<int> _items = BehaviorSubject<int>();
+  final BehaviorSubject<int> _itemsOutput = BehaviorSubject<int>();
 
   Stream<Map<int, Future<ItemModel>>> items;
 
@@ -14,16 +14,16 @@ class StoriesBloc {
   Stream<List<int>> get topIds => _topIds.stream;
 
   /// Getters to sinks
-  void Function(int) get fetchItem => _items.sink.add;
+  void Function(int) get fetchItem => _itemsOutput.sink.add;
 
   /// This creates a new ScanStreamControllers everytime it is called.
-  // get item => _items.stream.transform(_itemsTransformer());
-  /// _itemsTransformer() should be called only once.
+  // get item => _itemsOutput.stream.transform(_itemsTransformerOutput());
+  /// _itemsTransformerOutput() should be called only once.
   /// Otherwise multiple ScanStreamControllers will be created with multiple cache maps.
   /// Therefore the stream is transformed and assigned to a new variable inside the constructor.
   ///  The new stream can be accessed with items variable.
   StoriesBloc() {
-    items = _items.stream.transform(_itemsTransformer());
+    items = _itemsOutput.stream.transform(_itemsTransformer());
   }
 
   fetchTopIds() async {
@@ -48,6 +48,6 @@ class StoriesBloc {
 
   dispose() {
     _topIds.close();
-    _items.close();
+    _itemsOutput.close();
   }
 }
