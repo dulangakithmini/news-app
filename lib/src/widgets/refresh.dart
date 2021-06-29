@@ -10,6 +10,8 @@ class Refresh extends StatelessWidget {
   Widget build(BuildContext context) {
     return RefreshIndicator(
       child: child,
+
+      /// Reach the database and clear records
       onRefresh: () {},
     );
   }

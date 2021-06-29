@@ -86,6 +86,11 @@ class NewsDbProvider implements Source, Cache {
       conflictAlgorithm: ConflictAlgorithm.ignore,
     );
   }
+
+  /// Delete the records in the table
+  clear() {
+    return db.delete('Items');
+  }
 }
 
 /// To be used by the repository, in order to not create new NewsDbProvider instances in each list of sources and caches
