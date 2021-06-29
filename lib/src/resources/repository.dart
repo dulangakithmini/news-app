@@ -44,7 +44,10 @@ class Repository {
     }
 
     for (var cache in caches) {
+      /// Only add to the db, if the cache is not the same as the source
+      // if(cache != source) {
       cache.addItem(item);
+      // }
     }
 
     return item;
