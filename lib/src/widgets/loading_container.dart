@@ -21,11 +21,11 @@ class LoadingContainer extends StatelessWidget {
   }
 
   Widget buildContainer() {
-    return Expanded(
-      child: Container(
-        color: Colors.grey,
-        margin: EdgeInsets.only(top: 5.0, bottom: 5.0),
-      ),
+    return Container(
+      color: Colors.grey,
+      height: 24,
+      width: 150,
+      margin: EdgeInsets.only(top: 5.0, bottom: 5.0),
     );
   }
 }
