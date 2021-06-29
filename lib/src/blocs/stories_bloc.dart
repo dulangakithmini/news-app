@@ -34,7 +34,10 @@ class StoriesBloc {
   /// Therefore the stream is transformed and assigned to a new variable inside the constructor.
   ///  The new stream can be accessed with items variable.
   StoriesBloc() {
-    items = _itemsOutput.stream.transform(_itemsTransformer());
+    /// Transform every event comes from _itemsFetcher and put it back to _itemsOutput
+    _itemsFetcher.transform(_itemsTransformer()).pipe(_itemsOutput);
+
+    // items = _itemsOutput.stream.transform(_itemsTransformer());
   }
 
   fetchTopIds() async {
