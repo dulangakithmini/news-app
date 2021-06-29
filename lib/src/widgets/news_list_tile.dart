@@ -27,10 +27,27 @@ class NewsListTile extends StatelessWidget {
             if (!itemSnapshot.hasData) {
               return Text('Still loading item $itemId');
             }
-            return Text(itemSnapshot.data.title);
+            return buildTile(itemSnapshot.data);
+            // return Text(itemSnapshot.data.title);
           },
         );
       },
+    );
+  }
+
+  /// To create the Story tile using a given ItemModel
+  Widget buildTile(ItemModel item) {
+    return ListTile(
+      title: Text(item.title),
+      subtitle: Text('${item.score} votes'),
+
+      /// icon and text in the right side of the screen
+      trailing: Column(
+        children: [
+          Icon(Icons.comment),
+          Text('${item.descendants}'),
+        ],
+      ),
     );
   }
 }
