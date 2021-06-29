@@ -89,6 +89,7 @@ class NewsDbProvider implements Source, Cache {
 
   /// Delete the records in the table
   clear() {
+    /// returns a Future<int>
     return db.delete('Items');
   }
 }

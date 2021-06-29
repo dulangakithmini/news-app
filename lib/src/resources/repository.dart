@@ -67,6 +67,14 @@ class Repository {
     // dbProvider.addItem(item);
     // return item;
   }
+
+  /// Call the clear method in NewsDbProvider to clear the DB table records.
+  clearCache() async {
+    for (var cache in caches) {
+      /// use await since we have to wait until all the caches are cleared.
+      await cache.clear();
+    }
+  }
 }
 
 abstract class Source {
