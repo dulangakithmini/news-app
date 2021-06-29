@@ -59,7 +59,10 @@ class ItemModel {
     url = parsedJson['url'];
     score = parsedJson['score'];
     title = parsedJson['title'];
-    descendants = parsedJson['descendants'];
+
+    /// When the item is not a news and is a job advertisement, as this value is null, it shows null in the UI.
+    /// Therefore, assign 0 when null
+    descendants = parsedJson['descendants'] ?? 0;
   }
 
   ItemModel.fromDb(Map<String, dynamic> parsedJson) {
