@@ -4,7 +4,10 @@ import 'package:rxdart/rxdart.dart';
 
 class StoriesBloc {
   final PublishSubject<List<int>> _topIds = PublishSubject<List<int>>();
-  final BehaviorSubject<int> _itemsOutput = BehaviorSubject<int>();
+
+  /// Works with StreamBuilders
+  final BehaviorSubject<Map<int, Future<ItemModel>>> _itemsOutput =
+      BehaviorSubject<Map<int, Future<ItemModel>>>();
 
   Stream<Map<int, Future<ItemModel>>> items;
 
