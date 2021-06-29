@@ -9,6 +9,9 @@ class StoriesBloc {
   final BehaviorSubject<Map<int, Future<ItemModel>>> _itemsOutput =
       BehaviorSubject<Map<int, Future<ItemModel>>>();
 
+  /// Ids are passed into this and the transformer will be connected to this
+  final PublishSubject<int> _itemsFetcher = PublishSubject();
+
   Stream<Map<int, Future<ItemModel>>> items;
 
   final _repository = Repository();
