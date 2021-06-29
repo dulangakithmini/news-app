@@ -6,6 +6,8 @@ class StoriesBloc {
   final PublishSubject<List<int>> _topIds = PublishSubject<List<int>>();
   final BehaviorSubject<int> _items = BehaviorSubject<int>();
 
+  Stream<Map<int, Future<ItemModel>>> items;
+
   final _repository = Repository();
 
   /// Getters to streams
@@ -13,6 +15,16 @@ class StoriesBloc {
 
   /// Getters to sinks
   void Function(int) get fetchItem => _items.sink.add;
+
+  /// This creates a new ScanStreamControllers everytime it is called.
+  // get item => _items.stream.transform(_itemsTransformer());
+  /// _itemsTransformer() should be called only once.
+  /// Otherwise multiple ScanStreamControllers will be created with multiple cache maps.
+  /// Therefore the stream is transformed and assigned to a new variable inside the constructor.
+  ///  The new stream can be accessed with items variable.
+  StoriesBloc() {
+    items = _items.stream.transform(_itemsTransformer());
+  }
 
   fetchTopIds() async {
     /// Fetch Ids from the repository
