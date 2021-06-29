@@ -23,7 +23,9 @@ class StoriesBloc {
   Stream<Map<int, Future<ItemModel>>> get items => _itemsOutput.stream;
 
   /// Getters to sinks
-  void Function(int) get fetchItem => _itemsOutput.sink.add;
+  // void Function(int) get fetchItem => _itemsOutput.sink.add;
+  /// Getter to _itemsFetcher
+  void Function(int) get fetchItem => _itemsFetcher.sink.add;
 
   /// This creates a new ScanStreamControllers everytime it is called.
   // get item => _itemsOutput.stream.transform(_itemsTransformerOutput());
