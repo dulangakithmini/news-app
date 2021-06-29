@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news/src/blocs/stories_provider.dart';
 
 /// To implement swipe to refresh
 class Refresh extends StatelessWidget {
@@ -8,11 +9,15 @@ class Refresh extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bloc = StoriesProvider.of(context);
+
     return RefreshIndicator(
       child: child,
 
       /// Reach the database and clear records
-      onRefresh: () {},
+      onRefresh: () async {
+        await bloc.clearCache();
+      },
     );
   }
 }
