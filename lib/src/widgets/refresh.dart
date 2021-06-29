@@ -17,6 +17,10 @@ class Refresh extends StatelessWidget {
       /// Reach the database and clear records
       onRefresh: () async {
         await bloc.clearCache();
+
+        /// Refetch the top ids and start displaying the stories again.
+        /// await is used to state that we need to await until the top ids are fetched, before resolving the RefreshIndicator
+        await bloc.fetchTopIds();
       },
     );
   }
