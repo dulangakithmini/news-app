@@ -11,6 +11,9 @@ class StoriesBloc {
   /// Getters to streams
   Stream<List<int>> get topIds => _topIds.stream;
 
+  /// Getters to sinks
+  void Function(int) get fetchItem => _items.sink.add;
+
   fetchTopIds() async {
     /// Fetch Ids from the repository
     final ids = await _repository.fetchTopIds();
