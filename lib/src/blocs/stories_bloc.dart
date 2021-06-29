@@ -3,7 +3,8 @@ import 'package:news/src/resources/repository.dart';
 import 'package:rxdart/rxdart.dart';
 
 class StoriesBloc {
-  final _topIds = PublishSubject<List<int>>();
+  final PublishSubject<List<int>> _topIds = PublishSubject<List<int>>();
+  final BehaviorSubject<int> _items = BehaviorSubject<int>();
 
   final _repository = Repository();
 
@@ -32,5 +33,6 @@ class StoriesBloc {
 
   dispose() {
     _topIds.close();
+    _items.close();
   }
 }
