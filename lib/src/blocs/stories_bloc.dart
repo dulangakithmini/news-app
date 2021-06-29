@@ -63,5 +63,6 @@ class StoriesBloc {
   dispose() {
     _topIds.close();
     _itemsOutput.close();
+    _itemsFetcher.close();
   }
 }
