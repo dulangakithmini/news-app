@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news/src/blocs/stories_provider.dart';
 import 'package:news/src/screens/home_screen/blocs/home_bloc.dart';
 import 'package:news/src/screens/news_detail.dart';
-
 // import 'package:news/src/screens/home_screen/home_screen.dart';
 import 'package:news/src/screens/news_list.dart';
 
@@ -36,6 +35,10 @@ class App extends StatelessWidget {
     if (settings.name != '/') {
       return MaterialPageRoute(
         builder: (context) {
+          /// id is passed as '/${item.id}'.
+          /// Remove the '/'
+          /// int.parse is used to convert the string id to int
+          final itemId = int.parse(settings.name.replaceFirst('/', ''));
           return NewsDetail();
         },
       );
