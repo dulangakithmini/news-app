@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:news/src/models/item_model.dart';
 import 'package:rxdart/rxdart.dart';
 
@@ -13,6 +15,12 @@ class CommentsBloc {
   /// Getters to sinks
   void Function(int event) get fetchItemWithComments =>
       _commentsFetcher.sink.add;
+
+  CommentsBloc() {
+    _commentsFetcher.transform(_commentsTransformer()).pipe(_commentsOutput);
+  }
+
+  StreamTransformer<int, dynamic> _commentsTransformer() {}
 
   dispose() {
     _commentsFetcher.close();
