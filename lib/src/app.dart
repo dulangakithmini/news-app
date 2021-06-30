@@ -39,7 +39,11 @@ class App extends StatelessWidget {
           /// Remove the '/'
           /// int.parse is used to convert the string id to int
           final itemId = int.parse(settings.name.replaceFirst('/', ''));
-          return NewsDetail();
+
+          /// Pass the itemId to NewsDetail
+          return NewsDetail(
+            itemId: itemId,
+          );
         },
       );
     }
