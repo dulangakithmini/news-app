@@ -32,7 +32,9 @@ class NewsListTile extends StatelessWidget {
               /// Load the stand in widget if the data is not loaded
               return LoadingContainer();
             }
-            return buildTile(itemSnapshot.data);
+
+            /// context is sent to be used by pushNamed in onTap
+            return buildTile(context, itemSnapshot.data);
             // return Text(itemSnapshot.data.title);
           },
         );
@@ -41,7 +43,8 @@ class NewsListTile extends StatelessWidget {
   }
 
   /// To create the Story tile using a given ItemModel
-  Widget buildTile(ItemModel item) {
+  /// /// context is received to be used by pushNamed in onTap
+  Widget buildTile(BuildContext context, ItemModel item) {
     return Column(
       children: [
         ListTile(
@@ -55,6 +58,10 @@ class NewsListTile extends StatelessWidget {
               Text('${item.descendants}'),
             ],
           ),
+          onTap: () {
+            print('${item.id} was tapped!');
+            Navigator.pushNamed(context, '/${item.id}');
+          },
         ),
 
         /// Divider between each tile
