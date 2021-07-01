@@ -43,6 +43,12 @@ class App extends StatelessWidget {
           /// int.parse is used to convert the string id to int
           final itemId = int.parse(settings.name.replaceFirst('/', ''));
 
+          /// Access the CommentsBloc
+          final commentsBloc = CommentsProvider.of(context);
+
+          /// Start fetching items for the tapped story
+          commentsBloc.fetchItemWithComments(itemId);
+
           /// Pass the itemId to NewsDetail
           return NewsDetail(
             itemId: itemId,
