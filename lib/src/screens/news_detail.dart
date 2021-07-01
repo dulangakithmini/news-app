@@ -45,8 +45,13 @@ class NewsDetail extends StatelessWidget {
   Widget buildTitle(ItemModel item) {
     return Container(
       margin: EdgeInsets.all(10.0),
+
+      /// Container is in the top of the screen and stretch from left to right
+      alignment: Alignment.topCenter,
       child: Text(
         item.title,
+
+        /// Center the text
         textAlign: TextAlign.center,
         style: TextStyle(
           fontSize: 20.0,
