@@ -67,14 +67,14 @@ class NewsDetail extends StatelessWidget {
 
   /// Build the comment list
   Widget buildList(ItemModel item, Map<int, Future<ItemModel>> itemMap) {
-    /// Create a Widget list and add title and comments
+    /// Create a Widget list and add title
     final children = <Widget>[];
     children.add(buildTitle(item));
 
     /// map() returns an Iterable.
     /// Since this will be added to the list of children in the ListView, it is converted to a list with .toList()
     final commentsList = item.kids.map(
-          (kidId) {
+      (kidId) {
         return Comment(
           itemId: kidId,
           itemMap: itemMap,
@@ -82,10 +82,15 @@ class NewsDetail extends StatelessWidget {
       },
     ).toList();
 
+    /// Add the commentsList to the children list
+    children.addAll(commentsList);
+
     return ListView(
-      children: <Widget>[
-        buildTitle(item),
-      ],
+      /// Add children list - It shows the title and the commentsList
+      children: children,
+      // children: <Widget>[
+      // buildTitle(item),
+      // ],
     );
   }
 }
