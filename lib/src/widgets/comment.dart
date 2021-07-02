@@ -43,6 +43,9 @@ class Comment extends StatelessWidget {
             Comment(
               itemId: kidId,
               itemMap: itemMap,
+
+              /// Increment the current depth by 1
+              depth: depth + 1,
             ),
           );
         });
