@@ -20,45 +20,55 @@ class Comment extends StatelessWidget {
         }
 
         /// Create a Widget list with top comments
-        final children = <Widget>[
-          ListTile(
-            title: Text(snapshot.data.text),
+        final children = <
+        Widget
+        >[
+        ListTile(
+        title: buildText(snapshot.data)),
 
-            /// If the comment is deleted, the by property = ''
-            subtitle: snapshot.data.by == ''
+        /// If the comment is deleted, the by property = ''
+        subtitle: snapshot.data.by == ''
 
-                /// If empty, display 'Deleted'
-                ? Text('Deleted')
-                : Text(snapshot.data.by),
-            contentPadding: EdgeInsets.only(left: depth * 16.0, right: 16),
-          ),
-          Divider(
-            thickness: 1.5,
-          ),
-          // Text(snapshot.data.text),
+        /// If empty, display 'Deleted'
+        ? Text('Deleted')
+            : Text(snapshot.data.by),
+        contentPadding: EdgeInsets.only(left: depth * 16.0, right: 16),
+        ),
+        Divider(
+        thickness: 1.5,
+        ),
+        // Text(snapshot.data.text),
         ];
 
         /// For each kidId, Create Comments recursively and add to the children list
         snapshot.data.kids.forEach((kidId) {
-          children.add(
-            Comment(
-              itemId: kidId,
-              itemMap: itemMap,
+        children.add(
+        Comment(
+        itemId: kidId,
+        itemMap: itemMap,
 
-              /// Increment the current depth by 1
-              depth: depth + 1,
-            ),
-          );
+        /// Increment the current depth by 1
+        depth: depth + 1,
+        ),
+        );
         });
 
         return Column(
-          children: children,
-          // children: [
-          // Text(snapshot.data.text),
-          // ],
+        children: children,
+        // children: [
+        // Text(snapshot.data.text),
+        // ],
         );
         // return Text(snapshot.data.text);
       },
     );
+  }
+
+  Widget buildText(ItemModel item) {
+    final text = item.text.replaceAll('&#x27;', "'")
+        .replaceAll('<p>', '\n\n')
+        .replaceAll('</p>', '');
+
+    return Text(text);
   }
 }
