@@ -18,7 +18,14 @@ class Comment extends StatelessWidget {
 
         /// Create a Widget list with top comments
         final children = <Widget>[
-          Text(snapshot.data.text),
+          ListTile(
+            title: Text(snapshot.data.text),
+            subtitle: Text(snapshot.data.by),
+          ),
+          Divider(
+            thickness: 1.5,
+          ),
+          // Text(snapshot.data.text),
         ];
 
         /// For each kidId, Create Comments recursively and add to the children list
