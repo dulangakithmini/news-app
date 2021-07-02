@@ -39,7 +39,10 @@ class ItemModel {
     deleted = parsedJson['deleted'] ?? false;
 
     type = parsedJson['type'];
-    by = parsedJson['by'];
+
+    /// When the item is deleted, this value is null.
+    /// Threfore, if the value is null, assign ''.
+    by = parsedJson['by'] ?? '';
     time = parsedJson['time'];
 
     /// When the item is not a story and is a comment, as this value is null, it gives an error in the ternary operators in toMapForDb function.
@@ -49,7 +52,6 @@ class ItemModel {
     /// When the item is not a story and is a comment, as this value is null, it gives an error in the ternary operators in toMapForDb function.
     /// Threfore, if the value is null, assign false.
     dead = parsedJson['dead'] ?? false;
-
     parent = parsedJson['parent'];
 
     /// When the item is not a story and is a comment, as this value is null, it gives an error in the ternary operators in toMapForDb function.
