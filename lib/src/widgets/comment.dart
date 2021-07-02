@@ -20,7 +20,13 @@ class Comment extends StatelessWidget {
         final children = <Widget>[
           ListTile(
             title: Text(snapshot.data.text),
-            subtitle: Text(snapshot.data.by),
+
+            /// If the comment is deleted, the by property = ''
+            subtitle: snapshot.data.by == ''
+
+                /// If empty, display 'Deleted'
+                ? Text('Deleted')
+                : Text(snapshot.data.by),
           ),
           Divider(
             thickness: 1.5,
