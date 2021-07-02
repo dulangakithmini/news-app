@@ -78,6 +78,9 @@ class NewsDetail extends StatelessWidget {
         return Comment(
           itemId: kidId,
           itemMap: itemMap,
+
+          /// All the Comments created here are top level comments
+          depth: 0,
         );
       },
     ).toList();
