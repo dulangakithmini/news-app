@@ -30,6 +30,7 @@ class Comment extends StatelessWidget {
                 /// If empty, display 'Deleted'
                 ? Text('Deleted')
                 : Text(snapshot.data.by),
+            contentPadding: EdgeInsets.only(left: depth * 16.0, right: 16),
           ),
           Divider(
             thickness: 1.5,
