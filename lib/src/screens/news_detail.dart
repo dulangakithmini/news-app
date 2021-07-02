@@ -80,7 +80,7 @@ class NewsDetail extends StatelessWidget {
           itemMap: itemMap,
 
           /// All the Comments created here are top level comments
-          depth: 0,
+          depth: 1,
         );
       },
     ).toList();
