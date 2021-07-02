@@ -5,7 +5,10 @@ class Comment extends StatelessWidget {
   final int itemId;
   final Map<int, Future<ItemModel>> itemMap;
 
-  Comment({this.itemId, this.itemMap});
+  /// To decide the indentation of comments
+  final int depth;
+
+  Comment({this.itemId, this.itemMap, this.depth});
 
   @override
   Widget build(BuildContext context) {
